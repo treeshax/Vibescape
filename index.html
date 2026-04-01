@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Music Player API Test</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <main class="main-content">
+            <header class="top-bar panel">
+                <div class="search-container">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-bar" placeholder="What do you want to listen to?">
+                </div>
+                <div class="user-profile">
+                    <div class="avatar">👤</div>
+                </div>
+            </header>
+
+            <div class="content-view panel">
+                <h1>Vibescape</h1>
+                <p>Welcome to the music player interface. Click below to fetch the latest data.</p>
+                
+                <button id="get-data-btn" class="primary-btn">Get Spotify Data</button>
+
+                <div id="results-container" class="results-container">
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
