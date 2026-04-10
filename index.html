@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spotify Music Player API Test</title>
+    <title>Vibescape – Your Premium Music Dashboard</title>
+    <meta name="description" content="Vibescape: a premium Spotify-powered music dashboard with smart filters for liked songs.">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -21,12 +22,106 @@
             </header>
 
             <div class="content-view panel">
-                <h1>Vibescape</h1>
-                <p>Welcome to the music player interface. Click below to fetch the latest data.</p>
-                
-                <button id="get-data-btn" class="primary-btn">Get Spotify Data</button>
+                <div id="welcome-section">
+                    <h1>Vibescape</h1>
+                    <p>Welcome to the premium music experience. Login to sync your Spotify account.</p>
+                    
+                    <button id="get-data-btn" class="primary-btn glass-btn">Search Top Hits</button>
+                    <button id="login-btn" class="primary-btn glass-btn accent">Login with Spotify</button>
+                    <div id="results-container" class="results-container"></div>
+                </div>
 
-                <div id="results-container" class="results-container">
+                <div id="user-dashboard" style="display: none;">
+                    <div class="profile-header">
+                        <img id="profile-img" src="" alt="Profile Image" class="profile-avatar">
+                        <div class="profile-info">
+                            <h2 id="profile-name">User Name</h2>
+                            <p id="profile-email">user@example.com</p>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-grid">
+                        <section class="dashboard-section" id="top-artists-section">
+                            <h3>Your Top Artists</h3>
+                            <div class="scroll-container" id="top-artists-container"></div>
+                        </section>
+
+                        <section class="dashboard-section" id="recently-played-section">
+                            <h3>Recently Played</h3>
+                            <div class="scroll-container" id="recently-played-container"></div>
+                        </section>
+
+                        <section class="dashboard-section" id="liked-songs-section">
+                            <div class="section-header">
+                                <h3>Liked Songs</h3>
+                                <span class="results-count" id="liked-count"></span>
+                            </div>
+
+                            <!-- Filter Bar -->
+                            <div class="filter-bar" id="liked-filter-bar">
+                                <div class="filter-row">
+                                    <div class="filter-group">
+                                        <label for="filter-artist">🎤 Artist</label>
+                                        <input type="text" id="filter-artist" class="filter-input" placeholder="e.g. Taylor Swift">
+                                    </div>
+                                    <div class="filter-group">
+                                        <label for="filter-album">💿 Album</label>
+                                        <input type="text" id="filter-album" class="filter-input" placeholder="e.g. Midnights">
+                                    </div>
+                                    <div class="filter-group">
+                                        <label for="filter-year">📅 Released after</label>
+                                        <input type="number" id="filter-year" class="filter-input" placeholder="e.g. 2020" min="1900" max="2099">
+                                    </div>
+                                    <div class="filter-group">
+                                        <label for="filter-popularity">⭐ Min Popularity</label>
+                                        <div class="range-wrapper">
+                                            <input type="range" id="filter-popularity" min="0" max="100" value="0">
+                                            <span id="popularity-value">0</span>
+                                        </div>
+                                    </div>
+                                    <div class="filter-group toggle-group">
+                                        <label for="filter-explicit">🔞 Explicit only</label>
+                                        <label class="toggle-switch">
+                                            <input type="checkbox" id="filter-explicit">
+                                            <span class="toggle-track"></span>
+                                        </label>
+                                    </div>
+                                    <div class="filter-group toggle-group">
+                                        <label for="filter-clean">🧼 Clean only</label>
+                                        <label class="toggle-switch">
+                                            <input type="checkbox" id="filter-clean">
+                                            <span class="toggle-track"></span>
+                                        </label>
+                                    </div>
+                                    <div class="filter-group">
+                                        <label for="sort-select">↕ Sort by</label>
+                                        <div class="sort-wrapper">
+                                            <select id="sort-select" class="filter-input sort-select">
+                                                <option value="default">Default</option>
+                                                <option value="name-asc">Name A → Z</option>
+                                                <option value="name-desc">Name Z → A</option>
+                                                <option value="artist-asc">Artist A → Z</option>
+                                                <option value="artist-desc">Artist Z → A</option>
+                                                <option value="year-desc">Newest first</option>
+                                                <option value="year-asc">Oldest first</option>
+                                                <option value="pop-desc">Most popular</option>
+                                                <option value="pop-asc">Least popular</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <button class="filter-reset-btn" id="filter-reset-btn" title="Clear all filters">✕ Clear</button>
+                                </div>
+                                <div class="active-chips" id="active-chips"></div>
+                            </div>
+
+                            <div class="scroll-container" id="liked-songs-container"></div>
+                        </section>
+
+                        <section class="dashboard-section" id="playlists-section">
+                            <h3>Your Playlists</h3>
+                            <div class="scroll-container" id="playlists-container"></div>
+                        </section>
+                    </div>
                 </div>
             </div>
         </main>
